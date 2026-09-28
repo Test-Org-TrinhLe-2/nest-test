@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install --legacy-peer-deps",
+  "functions": {
+    "api/index.ts": {
+      "memory": 256,
+      "maxDuration": 30
+    }
+  },
+  "crons": [
+    {
+      "path": "/cron/every-minute",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/cron/daily-morning",
+      "schedule": "0 1 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index"
+    }
+  ]
+}
