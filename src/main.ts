@@ -12,6 +12,7 @@ async function createApp() {
   return app;
 }
 
+// mock commit
 // Chạy local (nest start / nest start --watch)
 // Vercel tự set VERCEL=1 nên block này sẽ không chạy trên production
 if (!process.env.VERCEL) {
