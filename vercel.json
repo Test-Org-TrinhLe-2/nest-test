@@ -11,10 +11,6 @@
   },
   "crons": [
     {
-      "path": "/cron/every-minute",
-      "schedule": "* * * * *"
-    },
-    {
       "path": "/cron/daily-morning",
       "schedule": "0 1 * * *"
     }

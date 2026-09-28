@@ -12,17 +12,6 @@ export class CronController {
   constructor(private readonly tasksService: TasksService) {}
 
   /**
-   * GET /cron/every-minute
-   * Được Vercel gọi mỗi phút (schedule: "* * * * *")
-   */
-  @Get('every-minute')
-  handleEveryMinute() {
-    this.logger.log('Vercel Cron: /cron/every-minute được gọi');
-    this.tasksService.handleEveryMinute();
-    return { ok: true, job: 'every-minute', timestamp: new Date().toISOString() };
-  }
-
-  /**
    * GET /cron/daily-morning
    * Được Vercel gọi lúc 8:00 sáng (UTC+7 = 01:00 UTC, schedule: "0 1 * * *")
    */
@@ -33,3 +22,4 @@ export class CronController {
     return { ok: true, job: 'daily-morning', timestamp: new Date().toISOString() };
   }
 }
+
