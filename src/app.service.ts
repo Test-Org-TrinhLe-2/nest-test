@@ -8,7 +8,7 @@ export class AppService {
 
   getMessage() {
     return {
-      message: 'Xin chào từ NestJS API! 3333',
+      message: 'Xin chào từ NestJS API! 555555',
       version: '1.0.0',
       timestamp: new Date().toISOString(),
     };
