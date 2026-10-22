@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 
+console.log('Node.js runtime version:', process.version);
+
 let app: any;
 
 async function createApp() {
