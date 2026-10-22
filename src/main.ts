@@ -25,6 +25,8 @@ if (!process.env.VERCEL) {
 
 // Export handler cho Vercel Serverless (@vercel/node)
 export default async function handler(req: any, res: any) {
+  console.log('Node.js runtime version:', process.version);
+
   const nestApp = await createApp();
   const httpAdapter = nestApp.getHttpAdapter();
   httpAdapter.getInstance()(req, res);
