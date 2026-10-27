@@ -8,7 +8,25 @@ let app: any;
 async function createApp() {
   if (!app) {
     app = await NestFactory.create(AppModule);
-    app.enableCors();
+    const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
+      .split(',')
+      .map((origin) => origin.trim().replace(/\/+$/, ''))
+      .filter(Boolean);
+
+    app.enableCors({
+      origin: (origin: any, callback: any) => {
+        const normalizedOrigin = origin?.replace(/\/+$/, '');
+        const isAllowed =
+          !normalizedOrigin || allowedOrigins.includes(normalizedOrigin);
+        if (isAllowed) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'],
+      credentials: true,
+    });
     await app.init();
   }
   return app;
